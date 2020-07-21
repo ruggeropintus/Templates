@@ -1,2 +1,2 @@
 # templates
-Various useful file templates
+Various useful file templates **only** for personal use.
