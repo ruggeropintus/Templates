@@ -1,0 +1,149 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "cmake",
+      "type": "shell",
+      "command": "rm -rf ../.vscode/ipch; rm -rf ./*; rm -rf ../bin; rm -rf ../lib; find ../ -name '*~' -exec rm {} \\;; cmake -DCMAKE_BUILD_TYPE=Release ../; ",
+      "options": {
+        "cwd": "${workspaceRoot}/build"
+      },
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "cmake_debug",
+      "type": "shell",
+      "command": "rm -rf ../.vscode/ipch; rm -rf ./*; rm -rf ../bin; rm -rf ../lib; find ../ -name '*~' -exec rm {} \\;; cmake -DCMAKE_BUILD_TYPE=Debug ../",
+      "options": {
+        "cwd": "${workspaceRoot}/build"
+      },
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "build_debug",
+      "type": "shell",
+      "command": "cmake -DCMAKE_BUILD_TYPE=Debug ../; make -k",
+      "options": {
+        "cwd": "${workspaceRoot}/build"
+      },
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "cmake -DCMAKE_BUILD_TYPE=Release ../; make -k",
+      "options": {
+        "cwd": "${workspaceRoot}/build"
+      },
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "rebuild",
+      "type": "shell",
+      "command": "rm -rf *; cmake -DCMAKE_BUILD_TYPE=Release ../; make -k",
+      "options": {
+        "cwd": "${workspaceRoot}/build"
+      },
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "rebuild_debug",
+      "type": "shell",
+      "command": "rm -rf *; cmake -DCMAKE_BUILD_TYPE=Debug ../; make -k",
+      "options": {
+        "cwd": "${workspaceRoot}/build"
+      },
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "clean",
+      "type": "shell",
+      "command": "rm -rf .vscode/ipch; rm -rf ./build/*; rm -rf ./bin; rm -rf ./lib; find . -name '*~' -exec rm {} \\;",
+      "options": {
+        "cwd": "${workspaceRoot}"
+      },
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "install",
+      "type": "shell",
+      "command": "sudo make install",
+      "options": {
+        "cwd": "${workspaceRoot}/build"
+      },
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "build_and_install",
+      "type": "shell",
+      "command": "cmake -DCMAKE_BUILD_TYPE=Release ../; make -k; sudo make install",
+      "options": {
+        "cwd": "${workspaceRoot}/build"
+      },
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "rebuild_and_install",
+      "type": "shell",
+      "command": "rm -rf *; cmake -DCMAKE_BUILD_TYPE=Release ../; make -k; sudo make install",
+      "options": {
+        "cwd": "${workspaceRoot}/build"
+      },
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "uninstall",
+      "type": "shell",
+      "command": "for i in $(cat ./install_manifest.txt); do echo Removing file: $i; sudo rm $i; done;",
+      "options": {
+        "cwd": "${workspaceRoot}/build"
+      },
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    }
+    // {
+    //   "label": "name",
+    //   "type": "shell",
+    //   "args": ["arg1","arg2"],
+    //   "command": "./name",
+    //   "options": {
+    //     "cwd": "${workspaceRoot}/bin"
+    //   },
+    //   "problemMatcher": []
+    // }
+  ]
+}
