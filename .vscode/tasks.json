@@ -6,7 +6,7 @@
     {
       "label": "cmake",
       "type": "shell",
-      "command": "rm -rf ../.vscode/ipch; rm -rf ./*; rm -rf ../bin; rm -rf ../lib; find ../ -name '*~' -exec rm {} \\;; cmake -DCMAKE_BUILD_TYPE=Release ../; ",
+      "command": "rm -rf ../.vscode/ipch; rm -rf ./*; rm -rf ./.[!.]*; rm -rf ../bin; rm -rf ../lib; find ../ -name '*~' -exec rm {} \\;; cmake -DCMAKE_BUILD_TYPE=Release ../; ",
       "options": {
         "cwd": "${workspaceRoot}/build"
       },
@@ -18,7 +18,7 @@
     {
       "label": "cmake_debug",
       "type": "shell",
-      "command": "rm -rf ../.vscode/ipch; rm -rf ./*; rm -rf ../bin; rm -rf ../lib; find ../ -name '*~' -exec rm {} \\;; cmake -DCMAKE_BUILD_TYPE=Debug ../",
+      "command": "rm -rf ../.vscode/ipch; rm -rf ./*; rm -rf ./.[!.]*; rm -rf ../bin; rm -rf ../lib; find ../ -name '*~' -exec rm {} \\;; cmake -DCMAKE_BUILD_TYPE=Debug ../",
       "options": {
         "cwd": "${workspaceRoot}/build"
       },
@@ -54,7 +54,7 @@
     {
       "label": "rebuild",
       "type": "shell",
-      "command": "rm -rf *; cmake -DCMAKE_BUILD_TYPE=Release ../; make -k",
+      "command": "rm -rf ./*; rm -rf ./.[!.]*; cmake -DCMAKE_BUILD_TYPE=Release ../; make -k",
       "options": {
         "cwd": "${workspaceRoot}/build"
       },
@@ -66,7 +66,7 @@
     {
       "label": "rebuild_debug",
       "type": "shell",
-      "command": "rm -rf *; cmake -DCMAKE_BUILD_TYPE=Debug ../; make -k",
+      "command": "rm -rf ./*; rm -rf ./.[!.]*; cmake -DCMAKE_BUILD_TYPE=Debug ../; make -k",
       "options": {
         "cwd": "${workspaceRoot}/build"
       },
@@ -78,7 +78,7 @@
     {
       "label": "clean",
       "type": "shell",
-      "command": "rm -rf .vscode/ipch; rm -rf ./build/*; rm -rf ./bin; rm -rf ./lib; find . -name '*~' -exec rm {} \\;",
+      "command": "rm -rf .vscode/ipch; rm -rf ./build/*; rm -rf ./build/.[!.]*; rm -rf ./bin; rm -rf ./lib; find . -name '*~' -exec rm {} \\;",
       "options": {
         "cwd": "${workspaceRoot}"
       },
@@ -114,7 +114,7 @@
     {
       "label": "rebuild_and_install",
       "type": "shell",
-      "command": "rm -rf *; cmake -DCMAKE_BUILD_TYPE=Release ../; make -k; sudo make install",
+      "command": "rm -rf ./*; rm -rf ./.[!.]*; cmake -DCMAKE_BUILD_TYPE=Release ../; make -k; sudo make install",
       "options": {
         "cwd": "${workspaceRoot}/build"
       },
