@@ -1,3 +1,4 @@
+#include <chrono>
 #include <iostream>
 
 std::size_t numberOfAllocations = 0;
@@ -16,7 +17,9 @@ void* operator new(size_t size) {
 // {
 // 	// in class possibly
 // 	bool* const m_WithinOurProgram;
+//  bool* withinOurProgram;
 // 	m_WithinOurProgram(withinOurProgram);
+//  *m_WithinOurProgram = false;
 // }
 
 int main(int argc, char** argv) {
@@ -25,20 +28,6 @@ int main(int argc, char** argv) {
 
 	std::size_t bytesAllocatedHandle = 0;
 	bytesAllocatedHandle = bytesAllocated;
-
-	auto startTimePoint = std::chrono::high_resolution_clock::now();
-
-	auto endTimePoint = std::chrono::high_resolution_clock::now();
-	auto start =
-		std::chrono::time_point_cast<std::chrono::milliseconds>(startTimePoint)
-			.time_since_epoch()
-			.count();
-	auto end =
-		std::chrono::time_point_cast<std::chrono::milliseconds>(endTimePoint)
-			.time_since_epoch()
-			.count();
-	auto duration = end - start;
-	std::cout << "processing in " << duration << "ms" << std::endl;
 
 	std::cout << "--------------------------" << std::endl;
 	std::cout << "numberOfAllocations - " << numberOfAllocations << std::endl;
